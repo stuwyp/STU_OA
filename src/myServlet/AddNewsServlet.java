@@ -35,13 +35,13 @@ public class AddNewsServlet extends HttpServlet {
 		String repath = "";
 		String title = "default";
 		String content = "default";
-		String department = "default";
+		int department_id = 0;
 		Date date = null;
 		
 		repath = request.getContextPath();// 获取当前路径上下文
 		title = request.getParameter("title");
 		content = request.getParameter("content");
-		department = request.getParameter("department");
+		department_id = Integer.parseInt(request.getParameter("department_id"));
 		
 		try {
 			date = DateUtil.formatString(request.getParameter("date"), "yyyy-MM-dd");
@@ -50,7 +50,7 @@ public class AddNewsServlet extends HttpServlet {
 		}
 	
 		NewsDAO news = new NewsDAO();
-		int affect = news.addArticle(title, content,department,date); // affect表示影响的行数
+		int affect = news.addArticle(title, content,department_id,date); // affect表示影响的行数
 		response.sendRedirect(repath + "/news.jsp");
 
 	}

@@ -44,7 +44,7 @@ public class DoLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		
+
 		// TODO Auto-generated method stub
 		String username = request.getParameter("username");// 获取登陆信息、
 		String password = request.getParameter("password");
@@ -54,14 +54,14 @@ public class DoLoginServlet extends HttpServlet {
 		String repath = request.getContextPath();// 获取当前路径上下文
 		HttpSession session = request.getSession();
 
-		//新建一个userbean保存结果
 		UserDAO userSearch= new UserDAO();
 		UserBean queryUser = new UserBean();
 		queryUser = userSearch.getUserByUsername(username);
-		//检测密码是否一样
 		if (password.equals(queryUser.getPassword())) {
 			// 登陆成功服务器内部转发
+			int priority = queryUser.getPriority();
 			session.setAttribute("username", username);// 在session里面保存一个用户登陆状态
+			session.setAttribute("priority", priority);// 在session里面保存一个用户权限信息
 			request.getRequestDispatcher("/loginsuccess.jsp").forward(request,
 					response);// Dispatcher：分配器,内部转发不能加上下文
 		} else {

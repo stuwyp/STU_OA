@@ -87,7 +87,7 @@
 										<c:out value="article.getTitle().length()"></c:out>
 									</c:if>
 									 </a>
-							<TD width="20%" align="center"><c:out value="${ article.getDepartment() }"></c:out></TD>
+							<TD width="20%" align="center"><c:out value="${ article.getDepartment_id() }"></c:out></TD>
 							<TD width="20%" align="center"><c:out value="${ article.getDate() }"></c:out></TD>
 						</TR>
 

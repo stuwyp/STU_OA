@@ -35,11 +35,11 @@ public class UpdateNewsServlet extends HttpServlet {
 				
 				String title = "default";
 				String content = "default";
-				String department = "default";
+				int department_id = 0;
 				Date date = null;
 				title = request.getParameter("title");
 				content = request.getParameter("content");
-				department = request.getParameter("department");
+				department_id = Integer.parseInt(request.getParameter("department_id"));
 				try{
 					d = sdf.parse(request.getParameter("date"));
 				}catch(Exception e){
@@ -52,7 +52,7 @@ public class UpdateNewsServlet extends HttpServlet {
 				String repath = request.getContextPath();// 获取当前路径上下文
 		
 			NewsDAO NewsSearch = new NewsDAO();
-			affect = NewsSearch.upDateArticle(title, content,department,date); // affect表示影响的行数
+			affect = NewsSearch.upDateArticle(title, content,department_id,date); // affect表示影响的行数
 			response.sendRedirect(repath + "/index.jsp");
 		
 	}

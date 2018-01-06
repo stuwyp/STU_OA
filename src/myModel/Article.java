@@ -12,7 +12,7 @@ public class Article {
 	private int id;								//id int
 	private String title;						//title varchar(45)
 	private String content;						//content text()
-	private String department;					//department varchar(45)
+	private int department_id;				//department_id int
 	private Date date;							//date date
 	// 构造文章操作方法
 	public Article() {
@@ -41,13 +41,15 @@ public class Article {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getDepartment() {
-		return department;
+
+	public int getDepartment_id() {
+		return department_id;
 	}
 
-	public void setDepartment(String department) {
-		this.department = department;
+	public void setDepartment_id(int department_id) {
+		this.department_id = department_id;
 	}
+
 	public Date getDate() {
 		return date;
 	}
@@ -56,11 +58,11 @@ public class Article {
 		this.date = date;
 	}
 
-	public Article(int id, String title, String content,String department,Date date) {
+	public Article(int id, String title, String content,int department_id,Date date) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
-		this.department = department;
+		this.department_id = getDepartment_id();
 		this.date = date;
 	}
 

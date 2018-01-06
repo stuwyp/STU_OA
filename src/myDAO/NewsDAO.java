@@ -48,7 +48,7 @@ public class NewsDAO {
 				int id = resultSet.getInt("id");
 				String title = resultSet.getString("title");
 				String content = resultSet.getString("content");
-				String department = resultSet.getString("department");
+				int department_id = resultSet.getInt("department_id");
 				// try {
 				// d = sdf.parse(resultSet.getString("date"));
 				// } catch (Exception e) {
@@ -62,7 +62,7 @@ public class NewsDAO {
 					e.printStackTrace();
 				}
 				// 遍历一组数据就new一个对象出来。
-				article = new Article(id, title, content, department, date);
+				article = new Article(id, title, content, department_id, date);
 				// 将获取到的实体类信息存入集合
 				list.add(article);
 			}
@@ -77,7 +77,7 @@ public class NewsDAO {
 	/**
 	 * 根据发布单位获取多篇文章
 	 */
-	public List<Article> getArticlesByDepart(String department) {
+	public List<Article> getArticlesByDepart(int department_id) {
 		// 建立对象
 		List<Article> list = new ArrayList<>();
 		
@@ -88,8 +88,8 @@ public class NewsDAO {
 		try {
 			// 连接到数据库，并开启会话
 			statement = (PreparedStatement) connection
-					.prepareStatement("select * from article where department=?");
-			statement.setString(1, department);
+					.prepareStatement("select * from article where department_id=?");
+			statement.setInt(1, department_id);
 			// 执行会话，并建立结果集
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
@@ -97,7 +97,7 @@ public class NewsDAO {
 				article.setId(resultSet.getInt("id"));
 				article.setTitle(resultSet.getString("title"));
 				article.setContent(resultSet.getString("content"));
-				article.setDepartment(resultSet.getString("department"));
+				article.setDepartment_id(resultSet.getInt("department_id"));
 				article.setDate(resultSet.getDate("date"));
 				list.add(article);
 			}
@@ -130,7 +130,7 @@ public class NewsDAO {
 				article.setId(resultSet.getInt("id"));
 				article.setTitle(resultSet.getString("title"));
 				article.setContent(resultSet.getString("content"));
-				article.setDepartment(resultSet.getString("department"));
+				article.setDepartment_id(resultSet.getInt("department_id"));
 				article.setDate(resultSet.getDate("date"));
 			}
 		} catch (SQLException e) {
@@ -172,7 +172,7 @@ public class NewsDAO {
 	/**
 	 * 添加文章
 	 */
-	public int addArticle(String title, String content, String department,
+	public int addArticle(String title, String content, int department_id,
 			Date date) {
 		int affect = 0;
 		// 建立连接
@@ -185,7 +185,7 @@ public class NewsDAO {
 					.prepareStatement("insert into article(title,content,department,date) values(?,?,?,?)");
 			statement.setString(1, title);
 			statement.setString(2, content);
-			statement.setString(3, department);
+			statement.setInt(3, department_id);
 			statement.setDate(4, date);
 			affect = statement.executeUpdate();
 		} catch (SQLException e) {
@@ -205,7 +205,7 @@ public class NewsDAO {
 	/**
 	 * 更改文章
 	 */
-	public int upDateArticle(String title, String content, String department,
+	public int upDateArticle(String title, String content, int department_id,
 			Date date) {
 		int affect = 0;
 		// 建立连接
@@ -214,9 +214,9 @@ public class NewsDAO {
 		PreparedStatement statement = null;
 		try {
 			statement = (PreparedStatement) connection
-					.prepareStatement("update article set content=?,department=?,date=? where title=?");
+					.prepareStatement("update article set content=?,department_id=?,date=? where title=?");
 			statement.setString(1, content);
-			statement.setString(2, department);
+			statement.setInt(2, department_id);
 			statement.setDate(3, date);
 			statement.setString(4, title);
 
@@ -283,7 +283,7 @@ public class NewsDAO {
 			article.setId(resultSet.getInt("id"));
 			article.setTitle(resultSet.getString("title"));
 			article.setContent(resultSet.getString("content"));
-			article.setDepartment(resultSet.getString("department"));
+			article.setDepartment_id(resultSet.getInt("department_id"));
 			article.setDate(resultSet.getDate("date"));
 			newsList.add(article);
 		}
