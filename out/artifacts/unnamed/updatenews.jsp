@@ -31,7 +31,7 @@
 				<span>公告标题</span>
 				<input type="text" name="title" required="required" style="width: 50%; height:auto;">
 				<span>发布单位</span> 
-				<input type="text" name="department" required="required" style="width: 50%; height:auto;"> 
+				<input type="text" name="department_id" required="required" style="width: 50%; height:auto;">
 				<span>发布时间</span> 
 				<input type="date" name="date" value="2017-12-29" min="2017-01-01" max="2018-12-31" required="required" style="width: 50%; height:auto;"> 
 				
