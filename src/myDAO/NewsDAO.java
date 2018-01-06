@@ -3,6 +3,7 @@ package myDAO;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -181,7 +182,7 @@ public class NewsDAO {
 		PreparedStatement statement = null;
 		try {
 			statement = (PreparedStatement) connection
-					.prepareStatement("insert into article(title, content, department_id, date) values(?,?,?,?)");
+					.prepareStatement("insert into article(title,content,department_id,date) values(?,?,?,?)");
 			statement.setString(1, title);
 			statement.setString(2, content);
 			statement.setInt(3, department_id);
@@ -277,7 +278,6 @@ public class NewsDAO {
 		ResultSet resultSet = pstmt.executeQuery();
 
 		while (resultSet.next()) {
-
 			Article article = new Article();
 			article.setId(resultSet.getInt("id"));
 			article.setTitle(resultSet.getString("title"));

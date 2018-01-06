@@ -35,4 +35,6 @@ TABLE.ListStyle TR.datalight td	{vertical-align:middle;}
 -->
 .ListStyle td{padding:15px 10px 8px 10px; }
 
+.edit_del {
+    float: right;
 }

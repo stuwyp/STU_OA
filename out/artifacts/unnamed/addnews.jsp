@@ -61,8 +61,7 @@
 
 				<div id="textEdit">
 					<textarea rows="36" class="textarea" name="content" id="myText"
-						style="width: 100%; height: auto;">
-				</textarea>
+						style="width: 100%; height: auto;"></textarea>
 
 				</div>
 

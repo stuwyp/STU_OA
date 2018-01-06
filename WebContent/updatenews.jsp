@@ -1,7 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@page import="myModel.Article"%>
+<%@page import="java.util.List"%>
+<%@page import="myDAO.NewsDAO"%>
+
 <!doctype html>
 <html>
 <head>
@@ -28,16 +31,23 @@
 		<div id="content">
 		<div class="form">
 			<form action="<%=request.getContextPath()%>/UpdateNewsServlet" method="post">
+				<%
+					int id = Integer.parseInt(request.getParameter("id"));
+					NewsDAO NewsSearch = new NewsDAO();
+					Article article = new Article();
+					article = NewsSearch.getArticleById(id);//根据传过来的id，查询具体的新闻信息
+					request.setAttribute("article", article);
+				%>
 				<span>公告标题</span>
-				<input type="text" name="title" required="required" style="width: 50%; height:auto;">
+				<input type="text" name="title" required="required" style="width: 50%; height:auto;"  value="${article.getTitle()}" >
 				<span>发布单位</span> 
-				<input type="text" name="department_id" required="required" style="width: 50%; height:auto;">
+				<input type="text" name="department_id" required="required" disabled="disabled" value="${article.getDepartment_id()}" style="width: 50%; height:auto;">
 				<span>发布时间</span> 
-				<input type="date" name="date" value="2017-12-29" min="2017-01-01" max="2018-12-31" required="required" style="width: 50%; height:auto;"> 
+				<input type="date" name="date" disabled="disabled" required="required" value="${article.getDate()}" style="width: 50%; height:auto;">
 				
 				<span>公告内容</span>
 				<div id="textEdit">
-				<textarea rows="36" class="textarea" name="content" required="required" style="width: 100%; height:auto;"></textarea>
+				<textarea rows="36" class="textarea" name="content" required="required" style="width: 100%; height:auto;">${article.getContent()}</textarea>
 				</div>
 				<input type="submit" value="更新">
 			</form>

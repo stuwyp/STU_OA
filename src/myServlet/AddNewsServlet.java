@@ -50,7 +50,7 @@ public class AddNewsServlet extends HttpServlet {
 		}
 	
 		NewsDAO news = new NewsDAO();
-		int affect = news.addArticle(title, content, department_id, date); // affect表示影响的行数
+		int affect = news.addArticle(title, content,department_id,date); // affect表示影响的行数
 		response.sendRedirect(repath + "/news.jsp");
 
 	}

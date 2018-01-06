@@ -1,4 +1,4 @@
-﻿﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -87,7 +87,7 @@
 										<c:out value="article.getTitle().length()"></c:out>
 									</c:if>
 									 </a>
-							<TD width="20%" align="center"><c:out value="${ article.getDepartment_id() }"></c:out></TD>
+							<TD width="20%" align="center"><c:out value="${ article.getDepartment() }"></c:out></TD>
 							<TD width="20%" align="center"><c:out value="${ article.getDate() }"></c:out></TD>
 						</TR>
 

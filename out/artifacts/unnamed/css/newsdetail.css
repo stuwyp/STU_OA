@@ -81,10 +81,6 @@ body {
 	padding: 0;
 }
 
-#nav .detail {
-	background-color:
-}
-
 #nav .navblock {
 	margin: 0 auto; /*text-align: center;是必要条件*/
 	display: inline-block; /*注意 block 是不可以居中的，它占据了整行！！！*/
@@ -108,9 +104,11 @@ body {
 #mainbody {
 	display: inline-block;
 	margin: 0 auto;
-	width: 800px;
+	padding: 0 80px;
+	width: 900px;
 	overflow: auto;
 	margin-top: 3px;
+	background-color: #dddddd;
 }
 
 #mainbody .infoframe {
@@ -120,7 +118,15 @@ body {
 
 #mainbody .newstitle {
 	overflow: hidden;
-	text-align: left;
+	text-align: center;
+}
+
+#mainbody .newstitle a {
+	display: inline;
+	text-decoration: none;
+	color: #c82333;
+	font-size: 14px;
+	font-weight: lighter;
 }
 
 #mainbody .newstext {
@@ -133,8 +139,8 @@ body {
 	background-color: #cccccc;
 	font-weight: lighter;
 	position:fixed;
-    bottom:0;
-    left:0;
+	bottom:0;
+	left:0;
 }
 
 #bottom .text {

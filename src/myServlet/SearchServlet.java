@@ -84,11 +84,10 @@ public class SearchServlet extends HttpServlet {
 				newsList = newsDao.newsList(pageBean);
 
 			} else {
-				/* 待改动 */
-//				String depart = req.getParameter("fwdw");
-//				System.out.print(depart);
-//				newsList = newsDao.getArticlesByDepart(depart);
-//				rowCount = newsList.size();
+				int depart = Integer.parseInt(req.getParameter("fwdw"));
+				System.out.print(depart);
+				newsList = newsDao.getArticlesByDepart(depart);
+				rowCount = newsList.size();
 			}
 
 			// 分页总数
