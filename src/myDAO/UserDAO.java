@@ -2,9 +2,7 @@ package myDAO;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import myModel.Article;
 import myModel.UserBean;
-import myUtil.DateUtil;
 import myUtil.DbUtil;
 
 import java.sql.Date;
@@ -38,11 +36,12 @@ public class UserDAO {
             // 遍历结果集，取出数据库里面的信息，并组成实体类
             while (resultSet.next()) {
                 int priority = resultSet.getInt("priority");
+                int department_id = resultSet.getInt("department_id");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
 
                 // 遍历一组数据就new一个对象出来。
-                user = new UserBean(username, password, priority);
+                user = new UserBean(username, password, priority, department_id);
                 // 将获取到的实体类信息存入集合
                 list.add(user);
             }
@@ -76,6 +75,7 @@ public class UserDAO {
                 user.setPriority(resultSet.getInt("priority"));
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
+                user.setDepartment_id(resultSet.getInt("department_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

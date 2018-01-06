@@ -54,9 +54,11 @@ public class DoLoginServlet extends HttpServlet {
 		String repath = request.getContextPath();// 获取当前路径上下文
 		HttpSession session = request.getSession();
 
+		//新建一个userbean保存结果
 		UserDAO userSearch= new UserDAO();
 		UserBean queryUser = new UserBean();
 		queryUser = userSearch.getUserByUsername(username);
+		//检测密码是否一样
 		if (password.equals(queryUser.getPassword())) {
 			// 登陆成功服务器内部转发
 			session.setAttribute("username", username);// 在session里面保存一个用户登陆状态

@@ -124,8 +124,6 @@
 								onClick="goURL()">
 								<img id="rightimg" src="img/login.jpg" title="员工登录">
 							</div> <!-- 右边图片-end -->
-
-
 						</td>
 					</tr>
 				</table>
