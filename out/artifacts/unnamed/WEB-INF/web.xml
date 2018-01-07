@@ -31,6 +31,25 @@
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/searchNews.jsp</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeleteNewsServlet</servlet-name>
+    <servlet-class>myServlet.DeleteNewsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteNewsServlet</servlet-name>
+    <url-pattern>/DeleteNews</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>AddUserServlet</servlet-name>
+    <servlet-class>myServlet.AddUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUserServlet</servlet-name>
+    <url-pattern>/AddUser</url-pattern>
+  </servlet-mapping>
   
   
 </web-app>

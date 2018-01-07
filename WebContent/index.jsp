@@ -163,47 +163,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     <a class="right" href="<%=request.getContextPath()%>/updatenews.jsp?id=${article.getId()}">编辑</a>
-                                    <a class="right" href="#">删除</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                    <a class="right" onclick="confirmDelete(${article.getId()})">删除</a>
 
 
 
@@ -311,6 +272,13 @@
             request.setAttribute("depart","书院总院");
             %>
             $("#searchForm").submit();
+        }
+
+        function confirmDelete(id) {
+			var isDelete = confirm("你确定要删除这个公告吗？");
+			if (isDelete == true) {
+                window.location.href = String(<%=request.getContextPath()%>) + "/DeleteNews?id=" + String(id);
+			}
         }
     </script>
 </body>

@@ -47,4 +47,13 @@ public class UserBean {
     public void setPriority(int priority) {
         this.priority = priority;
     }
+
+    public static String showPriority(int priority) {
+        if (priority >= 10) {
+            return "admin";
+        }
+        else {
+            return "一般用户";
+        }
+    }
 }

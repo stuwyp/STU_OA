@@ -86,4 +86,31 @@ public class UserDAO {
         }
         return user;
     }
+
+    public void addUser(String username, String password, int department_id, int priority) {
+        // 建立连接
+        Connection connection = DbUtil.getConnection();
+
+        // 开启会话
+        PreparedStatement statement = null;
+        try {
+            statement = (PreparedStatement) connection
+                    .prepareStatement("insert into user(username, password, department_id, priority) values(?,?,?,?)");
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setInt(3, department_id);
+            statement.setInt(4, priority);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // 关闭会话 和 连接
+            try {
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

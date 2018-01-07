@@ -45,18 +45,13 @@
 		<div class="bt" id="add"
 			onclick="window.location.href='<%=request.getContextPath()%>/addnews.jsp'">新增公告</div>
 
-		<label for="delete"></label>
-		<div class="bt" id="delete"
-			onclick="window.location.href='<%=request.getContextPath()%>/deletenews.jsp'">删除公告</div>
-
-		<label for="update"></label>
-		<div class="bt" id="update"
-			onclick="window.location.href='<%=request.getContextPath()%>/updatenews.jsp'">修改公告</div>
-
+		<label for="add"></label>
+		<div class="bt" id="addUser"
+			onclick="window.location.href='<%=request.getContextPath()%>/addUser.jsp'">新增用户</div>
 
 		<label for="myOffice"></label>
 		<div class="bt" id="myOffice"
-			onclick="window.location.href='<%=request.getContextPath()%>/myOffice.jsp'">个人办公</div>
+			onclick="window.location.href='seeAllUsers.jsp'">查看所有用户</div>
 
 		<label for="person"></label>
 		<div class="bt" id="person"

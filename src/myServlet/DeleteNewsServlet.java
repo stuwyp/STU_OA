@@ -27,12 +27,12 @@ public class DeleteNewsServlet extends HttpServlet {
 		// 防止中文乱码，设置字符集
 				request.setCharacterEncoding("utf-8");
 				response.setContentType("text/html;charSet=utf-8");
-				String title = "default";
-				title = request.getParameter("title");
+				int id = 0;
+				id = Integer.parseInt(request.getParameter("id"));
 				String repath = request.getContextPath();// 获取当前路径上下文
 		
 			NewsDAO NewsSearch = new NewsDAO();
-			NewsSearch.deleteIdArticle(title);
+			NewsSearch.deleteArticleById(id);
 			response.sendRedirect(repath + "/news.jsp");
 		
 	}

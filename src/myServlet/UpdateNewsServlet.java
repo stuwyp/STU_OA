@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import myDAO.NewsDAO;
+import myModel.Article;
 
 @WebServlet("/UpdateNewsServlet")
 public class UpdateNewsServlet extends HttpServlet {
@@ -32,28 +33,31 @@ public class UpdateNewsServlet extends HttpServlet {
 				response.setContentType("text/html;charSet=utf-8");
 				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");   
 				java.util.Date d = null;
-				
+
 				String title = "default";
 				String content = "default";
-				int department_id = 0;
-				Date date = null;
+//				int department_id = 0;
+//				Date date = null;
+				int id = Integer.parseInt(request.getParameter("id"));
+
 				title = request.getParameter("title");
 				content = request.getParameter("content");
-				department_id = Integer.parseInt(request.getParameter("department_id"));
-				try{
-					d = sdf.parse(request.getParameter("date"));
-				}catch(Exception e){
-					e.printStackTrace();  
-				}
-				date = new Date(d.getTime());
+//				department_id = Integer.parseInt(request.getParameter("department_id"));
+//				try{
+//					d = sdf.parse(request.getParameter("date"));
+//				}catch(Exception e){
+//					e.printStackTrace();
+//				}
+//				date = new Date(d.getTime());
+
 				
 				
 				int affect = 0;
 				String repath = request.getContextPath();// 获取当前路径上下文
 		
 			NewsDAO NewsSearch = new NewsDAO();
-			affect = NewsSearch.upDateArticle(title, content,department_id,date); // affect表示影响的行数
-			response.sendRedirect(repath + "/index.jsp");
+			affect = NewsSearch.upDateArticle(title, content, id); // affect表示影响的行数
+			response.sendRedirect(repath + request.getContextPath());
 		
 	}
 }

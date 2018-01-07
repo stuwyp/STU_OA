@@ -144,15 +144,19 @@ public class NewsDAO {
 	/**
 	 * 删除指定标题文章
 	 */
-	public boolean deleteIdArticle(String title) {
+
+	/**
+	 * 更改命名以及内容
+	 */
+	public boolean deleteArticleById(int id) {
 		// 建立连接
 		Connection connection = DbUtil.getConnection();
 		// 开启会话
 		PreparedStatement statement = null;
 		try {
 			statement = (PreparedStatement) connection
-					.prepareStatement("delete from article where title=?");
-			statement.setString(1, title);
+					.prepareStatement("delete from article where id=?");
+			statement.setInt(1, id);
 			statement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -205,8 +209,8 @@ public class NewsDAO {
 	/**
 	 * 更改文章
 	 */
-	public int upDateArticle(String title, String content, int department_id,
-			Date date) {
+
+	public int upDateArticle(String title, String content, int id) {
 		int affect = 0;
 		// 建立连接
 		Connection connection = DbUtil.getConnection();
@@ -214,11 +218,10 @@ public class NewsDAO {
 		PreparedStatement statement = null;
 		try {
 			statement = (PreparedStatement) connection
-					.prepareStatement("update article set content=?,department_id=?,date=? where title=?");
+					.prepareStatement("update article set content=?,title=? where id=?");
 			statement.setString(1, content);
-			statement.setInt(2, department_id);
-			statement.setDate(3, date);
-			statement.setString(4, title);
+			statement.setString(2, title);
+			statement.setInt(3, id);
 
 			affect = statement.executeUpdate();
 		} catch (SQLException e) {
