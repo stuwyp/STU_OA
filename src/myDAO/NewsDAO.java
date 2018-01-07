@@ -75,6 +75,41 @@ public class NewsDAO {
 	}
 
 	/**
+	 * 根据文章标题获取多篇文章
+	 */
+	public List<Article> getArticlesByTitle(String title) {
+		// 建立对象
+		List<Article> list = new ArrayList<>();
+
+		// 建立连接、会话、结果集
+		Connection connection = DbUtil.getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			// 连接到数据库，并开启会话
+			statement = (PreparedStatement) connection
+					.prepareStatement("select * from article where title LIKE \'%"+title+"%\'");
+//			statement.setString(1, title);
+			// 执行会话，并建立结果集
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				Article article = new Article();
+				article.setId(resultSet.getInt("id"));
+				article.setTitle(resultSet.getString("title"));
+				article.setContent(resultSet.getString("content"));
+				article.setDepartment_id(resultSet.getInt("department_id"));
+				article.setDate(resultSet.getDate("date"));
+				list.add(article);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.close(connection, statement, resultSet);
+		}
+		return list;
+	}
+
+	/**
 	 * 根据发布单位获取多篇文章
 	 */
 	public List<Article> getArticlesByDepart(int department_id) {
@@ -90,6 +125,41 @@ public class NewsDAO {
 			statement = (PreparedStatement) connection
 					.prepareStatement("select * from article where department_id=?");
 			statement.setInt(1, department_id);
+			// 执行会话，并建立结果集
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				Article article = new Article();
+				article.setId(resultSet.getInt("id"));
+				article.setTitle(resultSet.getString("title"));
+				article.setContent(resultSet.getString("content"));
+				article.setDepartment_id(resultSet.getInt("department_id"));
+				article.setDate(resultSet.getDate("date"));
+				list.add(article);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.close(connection, statement, resultSet);
+		}
+		return list;
+	}
+
+	/**
+	 * 根据文章内容获取多篇文章
+	 */
+	public List<Article> getArticlesByContent(String content) {
+		// 建立对象
+		List<Article> list = new ArrayList<>();
+
+		// 建立连接、会话、结果集
+		Connection connection = DbUtil.getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			// 连接到数据库，并开启会话
+			statement = (PreparedStatement) connection
+					.prepareStatement("select * from article where content LIKE \'%"+content+"%\'");
+//			statement.setString(1, content);
 			// 执行会话，并建立结果集
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {

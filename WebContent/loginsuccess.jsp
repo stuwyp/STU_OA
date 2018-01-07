@@ -53,6 +53,10 @@
 		<div class="bt" id="myOffice"
 			onclick="window.location.href='seeAllUsers.jsp'">查看所有用户</div>
 
+		<label for="searchNews"></label>
+		<div class="bt" id="searchNews"
+			onclick="window.location.href='SearchNews.jsp'">查询新闻</div>
+
 		<label for="person"></label>
 		<div class="bt" id="person"
 			onclick="window.location.href='<%=request.getContextPath()%>/person.jsp'">个人信息</div>

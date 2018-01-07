@@ -50,6 +50,7 @@
     <servlet-name>AddUserServlet</servlet-name>
     <url-pattern>/AddUser</url-pattern>
   </servlet-mapping>
+
   
   
 </web-app>

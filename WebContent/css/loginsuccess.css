@@ -153,13 +153,17 @@ body {
 #addUser{
 	background-color: #66CCFF;
 }
+#searchNews{
+	background-color: #ff526d;
+}
 
 #add:hover,
 #addUser:hover,
 #back:hover ,
 #person:hover,
 #myEmail:hover,
-#myOffice:hover {
+#myOffice:hover,
+#searchNews:hover {
 	box-shadow: 0 2px 11px 3px #888888;
 	cursor: pointer;
 }
