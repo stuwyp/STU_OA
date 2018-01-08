@@ -31,6 +31,7 @@
 				<td><%=user.getUsername()%></td>
 				<td><%=department.getNameById(user.getDepartment_id())%></td>
 				<td><%=user.getPriority()%></td>
+				<td><a href="<%=request.getContextPath()%>/DeleteUser?id=<%=user.getId()%>">删除</a></td>
 			</tr>
 		<%
 			}

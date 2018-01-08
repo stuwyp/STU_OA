@@ -37,13 +37,14 @@ public class UserDAO {
             resultSet = statement.executeQuery();
             // 遍历结果集，取出数据库里面的信息，并组成实体类
             while (resultSet.next()) {
+                int id = resultSet.getInt("id");
                 int priority = resultSet.getInt("priority");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 int department_id = resultSet.getInt("department_id");
 
                 // 遍历一组数据就new一个对象出来。
-                user = new UserBean(username, password, department_id, priority);
+                user = new UserBean(id,username, password, department_id, priority);
                 // 将获取到的实体类信息存入集合
                 list.add(user);
             }
@@ -74,6 +75,7 @@ public class UserDAO {
             // 执行会话，并建立结果集
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
+                user.setId(resultSet.getInt("id"));
                 user.setPriority(resultSet.getInt("priority"));
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
@@ -117,4 +119,32 @@ public class UserDAO {
         }
     }
 
+    /**
+     * 删除用户
+     */
+    public boolean deleteUserById(int id) {
+        // 建立连接
+        Connection connection = DbUtil.getConnection();
+
+        // 开启会话
+        PreparedStatement statement = null;
+        try {
+            statement = (PreparedStatement) connection
+                    .prepareStatement("delete from user where id=?");
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // 关闭会话 和 连接
+            try {
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
+    }
 }

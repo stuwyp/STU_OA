@@ -56,7 +56,7 @@
 		<c:if test="${ priority == 10 }">
 		<label for="person"></label>
 		<div class="bt" id="person"
-			 onclick="window.location.href='<%=request.getContextPath()%>/addDepartment.jsp'">新增部门</div>
+			 onclick="window.location.href='/manaDepartment.jsp'">管理部门</div>
 		</c:if>
 
 		<c:if test="${ priority == 10 }">
@@ -68,11 +68,6 @@
 		<label for="searchNews"></label>
 		<div class="bt" id="searchNews"
 			onclick="window.location.href='SearchNews.jsp'">查询新闻</div>
-
-
-		<label for="myEmail"></label>
-		<div class="bt" id="myEmail"
-			onclick="window.location.href='https://outlook.live.com/owa/'">查看邮件</div>
 
 
 		<label for="back"></label>

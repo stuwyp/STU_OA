@@ -90,7 +90,7 @@ public class DepartmentDAO {
     }
 
     /**
-     * 添加用户
+     * 添加部门
      */
     public void addDepartment(String name) {
         // 建立连接
@@ -115,4 +115,34 @@ public class DepartmentDAO {
             }
         }
     }
+
+    /**
+     * 删除部门
+     */
+    public boolean deleteDepartmentById(int id) {
+        // 建立连接
+        Connection connection = DbUtil.getConnection();
+
+        // 开启会话
+        PreparedStatement statement = null;
+        try {
+            statement = (PreparedStatement) connection
+                    .prepareStatement("delete from department where id=?");
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // 关闭会话 和 连接
+            try {
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
+    }
+
 }
