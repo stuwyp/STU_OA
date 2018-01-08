@@ -51,6 +51,16 @@
     <url-pattern>/AddUser</url-pattern>
   </servlet-mapping>
 
+
+  <servlet>
+    <servlet-name>AddDepartmentServlet</servlet-name>
+    <servlet-class>myServlet.AddDepartmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddDepartmentServlet</servlet-name>
+    <url-pattern>/AddDepartment</url-pattern>
+  </servlet-mapping>
+
   
   
 </web-app>

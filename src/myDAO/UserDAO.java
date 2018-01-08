@@ -87,6 +87,9 @@ public class UserDAO {
         return user;
     }
 
+    /**
+     * 添加用户
+     */
     public void addUser(String username, String password, int department_id, int priority) {
         // 建立连接
         Connection connection = DbUtil.getConnection();
@@ -113,4 +116,5 @@ public class UserDAO {
             }
         }
     }
+
 }

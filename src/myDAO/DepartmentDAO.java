@@ -88,4 +88,31 @@ public class DepartmentDAO {
         }
         return name;
     }
+
+    /**
+     * 添加用户
+     */
+    public void addDepartment(String name) {
+        // 建立连接
+        Connection connection = DbUtil.getConnection();
+
+        // 开启会话
+        PreparedStatement statement = null;
+        try {
+            statement = (PreparedStatement) connection
+                    .prepareStatement("insert into department(name) values(?)");
+            statement.setString(1, name);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // 关闭会话 和 连接
+            try {
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
