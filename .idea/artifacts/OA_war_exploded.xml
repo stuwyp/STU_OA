@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="OA:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/OA_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="OA" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="standard.jar" module-name="OA" />
+          <element id="library" level="module" name="mysql-connector-java-5.1.42-bin.jar" module-name="OA" />
+          <element id="library" level="module" name="jstl-1.2.jar" module-name="OA" />
+          <element id="file-copy" path="D:/Devtools/apache-tomcat-9.0.1-windows-x64/apache-tomcat-9.0.1/lib/servlet-api.jar" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="OA/web/Web" />
+    </root>
+  </artifact>
+</component>
