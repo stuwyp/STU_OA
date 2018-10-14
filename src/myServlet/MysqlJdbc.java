@@ -16,7 +16,7 @@ public class MysqlJdbc
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver"); 
-			// ¼ÓÔØMYSQL JDBCÇı¶¯³ÌĞò
+			// åŠ è½½MYSQL JDBCé©±åŠ¨ç¨‹åº
 			System.out.println("Success loading Mysql Driver!");
 		} catch (Exception e)
 		{
@@ -29,13 +29,13 @@ public class MysqlJdbc
 		try
 		{
 			String sql = "select * from user";
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
-			// Á¬½ÓURLÎª jdbc:mysql//·şÎñÆ÷µØÖ·/Êı¾İ¿âÃû £¬ºóÃæµÄ2¸ö²ÎÊı·Ö±ğÊÇµÇÂ½ÓÃ»§ÃûºÍÃÜÂë
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "ç”¨æˆ·", "å¯†ç ");
+			// è¿æ¥URLä¸º jdbc:mysql//æœåŠ¡å™¨åœ°å€/æ•°æ®åº“å ï¼Œåé¢çš„2ä¸ªå‚æ•°åˆ†åˆ«æ˜¯ç™»é™†ç”¨æˆ·åå’Œå¯†ç 
 
 			System.out.println("Success connect Mysql server!");
 			stmt = connect.createStatement();
 			rs = stmt.executeQuery(sql);
-			// user ÎªÄã±íµÄÃû³Æ
+			// user ä¸ºä½ è¡¨çš„åç§°
 			while (rs.next())
 			{
 				System.out.println(rs.getString("name"));
